@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sprout（スプラウト）— 話せる英語を育てる、月500円の英語アプリ</title>
+<meta name="description" content="単語の暗記から、瞬間英作文・1分スピーチのアウトプットまで。AIがその場で添削する英語学習アプリ。インストール不要、月500円。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F1E8; --surface:#FBF9F3; --surface-2:#F0ECDF;
+    --green:#2F6F5E; --green-d:#234E42; --green-soft:#E1EDE7;
+    --amber:#E6A94B; --amber-d:#B07C26; --amber-soft:#FBEBC9;
+    --ink:#26302C; --ink-2:#586059; --ink-3:#8C9389; --line:#E4DECE;
+    --font-en:'Fraunces',Georgia,serif; --font-jp:'Noto Sans JP',system-ui,sans-serif;
+    --shadow:0 1px 2px rgba(40,60,50,.05),0 8px 24px rgba(40,60,50,.06);
+    --shadow-lg:0 12px 40px rgba(40,60,50,.12);
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-jp);background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .en{font-family:var(--font-en);}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .mark{position:relative;white-space:nowrap;}
+  .mark::after{content:"";position:absolute;left:-3px;right:-3px;bottom:2px;height:42%;background:var(--amber-soft);z-index:-1;border-radius:4px;transform:rotate(-.8deg);}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(244,241,232,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;gap:14px;height:62px;}
+  .logo{display:flex;align-items:center;gap:9px;font-family:var(--font-en);font-weight:600;font-size:1.28rem;letter-spacing:.2px;}
+  .logo svg{width:30px;height:30px;}
+  .nav .links{display:flex;gap:22px;margin-left:auto;font-size:.92rem;color:var(--ink-2);}
+  .nav .links a:hover{color:var(--green);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:.95rem;padding:12px 20px;border-radius:999px;border:none;cursor:pointer;transition:transform .12s ease,box-shadow .2s,background .2s;font-family:var(--font-jp);}
+  .btn-primary{background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(47,111,94,.28);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(47,111,94,.34);}
+  .btn-ghost{background:transparent;color:var(--green);border:1.5px solid var(--green);}
+  .btn-ghost:hover{background:var(--green-soft);}
+  .nav .btn{padding:9px 17px;}
+  .links a, .nav .btn-cta{display:none;}
+  @media(min-width:880px){ .links a{display:inline;} .nav .btn-cta{display:inline-flex;} }
+
+  /* hero */
+  .hero{position:relative;padding:64px 0 30px;}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:38px;align-items:center;}
+  @media(min-width:920px){ .hero-grid{grid-template-columns:1.05fr .95fr;gap:50px;} .hero{padding:86px 0 56px;} }
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:700;letter-spacing:.04em;color:var(--green);background:var(--green-soft);padding:7px 14px;border-radius:999px;}
+  h1{font-family:var(--font-jp);font-weight:900;font-size:clamp(2.15rem,6.4vw,3.5rem);line-height:1.28;letter-spacing:-.01em;margin:20px 0 18px;}
+  h1 .big{font-family:var(--font-en);font-weight:600;font-style:italic;color:var(--green);}
+  .lead{font-size:1.06rem;color:var(--ink-2);max-width:30em;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 16px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.86rem;color:var(--ink-2);}
+  .chips span{display:inline-flex;align-items:center;gap:7px;}
+  .chips svg{width:16px;height:16px;color:var(--green);}
+
+  /* hero visual: sample card */
+  .demo{position:relative;}
+  .phone{background:var(--surface);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow-lg);padding:22px 20px 24px;max-width:380px;margin:0 auto;position:relative;}
+  .demo .leafblob{position:absolute;inset:-8% -10% auto auto;width:60%;height:60%;background:radial-gradient(closest-side,rgba(230,169,75,.22),transparent);filter:blur(8px);z-index:-1;}
+  .demo .leafblob2{position:absolute;inset:auto auto -12% -12%;width:55%;height:55%;background:radial-gradient(closest-side,rgba(47,111,94,.18),transparent);filter:blur(8px);z-index:-1;}
+  .d-top{display:flex;align-items:center;justify-content:space-between;color:var(--ink-3);font-size:.78rem;font-weight:700;margin-bottom:14px;}
+  .d-bar{height:6px;border-radius:6px;background:var(--surface-2);overflow:hidden;flex:1;margin:0 12px;}
+  .d-bar i{display:block;height:100%;width:62%;background:var(--green);}
+  .d-kind{font-size:.74rem;color:var(--ink-3);font-weight:700;}
+  .d-jp{font-weight:700;font-size:1.34rem;margin:6px 0 18px;line-height:1.5;}
+  .d-mic{width:96px;height:96px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;margin:6px auto 12px;box-shadow:0 8px 22px rgba(47,111,94,.16);}
+  .d-mic svg{width:40px;height:40px;}
+  .d-cap{text-align:center;color:var(--ink-2);font-size:.86rem;font-weight:600;margin-bottom:16px;}
+  .d-ref{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:11px 14px;margin-top:10px;}
+  .d-ref .lab{font-size:.68rem;color:var(--ink-3);font-weight:700;}
+  .d-ref .val{font-family:var(--font-en);font-size:1.02rem;}
+  .d-verdict{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:var(--green-soft);border-radius:10px;padding:9px 13px;font-size:.9rem;}
+  .d-verdict b{font-size:1.3rem;color:var(--green);}
+
+  /* sections */
+  section{padding:64px 0;}
+  .sec-head{max-width:34em;margin-bottom:38px;}
+  .kicker{font-size:.82rem;font-weight:700;letter-spacing:.08em;color:var(--amber-d);text-transform:uppercase;}
+  h2{font-weight:900;font-size:clamp(1.6rem,4.2vw,2.3rem);line-height:1.35;margin:10px 0 12px;letter-spacing:-.01em;}
+  h2 .big{font-family:var(--font-en);font-style:italic;font-weight:600;color:var(--green);}
+  .sec-head p{color:var(--ink-2);font-size:1.02rem;}
+  .band{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+  /* steps */
+  .steps{display:grid;gap:18px;grid-template-columns:1fr;counter-reset:s;}
+  @media(min-width:760px){ .steps{grid-template-columns:repeat(3,1fr);} }
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px 22px;position:relative;}
+  .step .num{font-family:var(--font-en);font-style:italic;font-size:1.5rem;color:var(--amber-d);font-weight:600;}
+  .step h3{font-size:1.18rem;margin:6px 0 8px;font-weight:700;}
+  .step p{color:var(--ink-2);font-size:.95rem;}
+  .step .arrow{display:none;}
+  @media(min-width:760px){
+    .step:not(:last-child)::after{content:"→";position:absolute;right:-19px;top:50%;transform:translateY(-50%);color:var(--ink-3);font-size:1.3rem;z-index:2;}
+  }
+
+  /* features */
+  .feat{display:grid;gap:16px;grid-template-columns:1fr;}
+  @media(min-width:680px){ .feat{grid-template-columns:1fr 1fr;} }
+  @media(min-width:980px){ .feat{grid-template-columns:1fr 1fr 1fr;} }
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px 22px;transition:transform .18s ease,box-shadow .2s;}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+  .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:14px;}
+  .ic svg{width:24px;height:24px;}
+  .ic.g{background:var(--green-soft);color:var(--green);} .ic.a{background:var(--amber-soft);color:var(--amber-d);}
+  .card h3{font-size:1.12rem;font-weight:700;margin-bottom:7px;}
+  .card p{color:var(--ink-2);font-size:.94rem;}
+  .group-label{font-family:var(--font-en);font-style:italic;font-size:1.05rem;color:var(--green);font-weight:600;margin:6px 0 14px;display:flex;align-items:center;gap:10px;}
+  .group-label::after{content:"";flex:1;height:1px;background:var(--line);}
+
+  /* compare */
+  .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);}
+  table{border-collapse:collapse;width:100%;min-width:560px;background:var(--surface);}
+  th,td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:.95rem;}
+  thead th{background:var(--green);color:#fff;font-weight:700;}
+  thead th.us{background:var(--green-d);}
+  thead th:first-child{background:var(--green-d);}
+  tbody th{font-weight:600;color:var(--ink);}
+  td.us{background:var(--green-soft);font-weight:700;color:var(--green-d);}
+  .yes{color:var(--green);font-weight:800;}
+  .no{color:var(--ink-3);}
+  .price-cell{font-family:var(--font-en);font-weight:600;}
+  .note{font-size:.8rem;color:var(--ink-3);margin-top:12px;}
+
+  /* pricing */
+  .price-card{max-width:440px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-lg);padding:34px 30px;text-align:center;position:relative;overflow:hidden;}
+  .price-card .ribbon{position:absolute;top:16px;right:-34px;transform:rotate(38deg);background:var(--amber);color:#3a2e0c;font-weight:800;font-size:.74rem;padding:5px 42px;}
+  .price-amt{font-family:var(--font-en);font-weight:600;font-size:3.4rem;color:var(--green);line-height:1;}
+  .price-amt small{font-size:1.1rem;color:var(--ink-2);font-family:var(--font-jp);}
+  .price-sub{color:var(--ink-2);font-size:.92rem;margin:6px 0 22px;}
+  .price-list{text-align:left;display:grid;gap:11px;margin:0 0 24px;}
+  .price-list li{display:flex;gap:11px;align-items:flex-start;list-style:none;font-size:.95rem;}
+  .price-list svg{width:19px;height:19px;color:var(--green);flex:none;margin-top:3px;}
+
+  /* faq */
+  .faq{max-width:760px;margin:0 auto;}
+  details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 20px;margin-bottom:12px;}
+  summary{cursor:pointer;font-weight:700;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";font-family:var(--font-en);font-size:1.5rem;color:var(--green);transition:transform .2s;}
+  details[open] summary::after{transform:rotate(45deg);}
+  details p{color:var(--ink-2);font-size:.95rem;padding:0 0 18px;}
+
+  /* cta band */
+  .cta-final{background:linear-gradient(150deg,var(--green),var(--green-d));color:#F4F1E8;text-align:center;border-radius:28px;padding:54px 26px;position:relative;overflow:hidden;}
+  .cta-final h2{color:#fff;}
+  .cta-final p{color:rgba(244,241,232,.85);max-width:30em;margin:0 auto 26px;}
+  .cta-final .btn-primary{background:#F4F1E8;color:var(--green-d);box-shadow:0 8px 24px rgba(0,0,0,.18);}
+  .cta-final .leaf-bg{position:absolute;right:-30px;bottom:-40px;opacity:.12;width:240px;}
+
+  footer{padding:40px 0 60px;color:var(--ink-3);font-size:.85rem;}
+  footer .frow{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;}
+  .disc{margin-top:18px;font-size:.78rem;line-height:1.6;color:var(--ink-3);max-width:62em;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 42V22" stroke="#234E42" stroke-width="3" stroke-linecap="round"/><path d="M24 26C24 18 18 13 9 13c0 8 6 13 15 13Z" fill="#2F6F5E"/><path d="M24 22c0-7 5-12 14-12 0 7-5 12-14 12Z" fill="#E6A94B"/></svg>
+      Sprout
+    </a>
+    <nav class="links">
+      <a href="#method">学習法</a>
+      <a href="#features">機能</a>
+      <a href="#compare">比較</a>
+      <a href="#price">料金</a>
+    </nav>
+    <a class="btn btn-primary btn-cta" href="#price">使ってみる</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">AIスピーキング × 単語アプリ</span>
+        <h1>話せる英語は、毎日の小さな反復で<span class="mark">芽を出す</span>。</h1>
+        <p class="lead">単語の暗記から、<b>瞬間英作文</b>・<b>1分スピーチ</b>のアウトプットまで。話した英語をAIがその場で添削して、もっと自然な言い回しまで教えてくれる。スマホのホーム画面に追加するだけ、<b>月500円</b>の英語トレーニング。</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#price">使ってみる</a>
+          <a class="btn btn-ghost" href="#method">仕組みを見る</a>
+        </div>
+        <div class="chips">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> インストール不要</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> オフラインでも暗記OK</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 日常＋ビジネス対応</span>
+        </div>
+      </div>
+
+      <div class="demo reveal">
+        <div class="leafblob"></div><div class="leafblob2"></div>
+        <div class="phone">
+          <div class="d-top"><span>✕</span><span class="d-bar"><i></i></span><span>4/8</span></div>
+          <div class="d-kind">日本語を英語に（テーマ：be動詞）</div>
+          <div class="d-jp">彼らは友達です。</div>
+          <div class="d-mic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 19v3"/></svg>
+          </div>
+          <div class="d-cap">タップして話す</div>
+          <div class="d-ref"><div class="lab">お手本</div><div class="val">They are friends.</div></div>
+          <div class="d-verdict"><b>○</b><span>自然な言い方です！別の言い方：They're buddies.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method" class="band">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">The method</span>
+        <h2>“知ってる”を、<span class="big">“話せる”</span>に変える3ステップ。</h2>
+        <p>話せないのは知識不足ではなく、知識を引き出す<b>反復</b>が足りないから。Sproutは「ためる→引き出す→話し切る」を毎日のスキマ時間で回せます。</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="num">01</div><h3>ためる</h3><p>単語・フレーズを忘却曲線（SRS）で暗記。プリセット教材や4択クイズで土台をつくる。</p></div>
+        <div class="step reveal"><div class="num">02</div><h3>引き出す</h3><p>瞬間英作文で、日本語を見たらすぐ英語を声に。AIが○△×で採点し、言い換えも提案。</p></div>
+        <div class="step reveal"><div class="num">03</div><h3>話し切る</h3><p>独り言英会話で、お題について1分スピーチ。AIが文法・ニュアンスを添削し、より自然な表現を提示。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Features</span>
+        <h2>1つのアプリに、<span class="big">必要な練習</span>を全部。</h2>
+        <p>単語の土台づくりから、声に出すアウトプット、AIによる添削・復習まで。学習タブは目的別に整理されています。</p>
+      </div>
+
+      <div class="group-label reveal">単語学習</div>
+      <div class="feat" style="margin-bottom:34px">
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><h3>オリジナルデッキ</h3><p>自分の単語帳を、忘却曲線に沿った復習か、追加した順かを選んで学習。</p></div>
+        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM19 3v18"/></svg></div><h3>用意した単語</h3><p>日常会話・TOEICなどのプリセット教材。すぐに学習を始められます。</p></div>
+        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7a6 6 0 0 1-12 0ZM6 5H3v2a3 3 0 0 0 3 3M18 5h3v2a3 3 0 0 1-3 3M9 21h6M12 15v6"/></svg></div><h3>4択クイズ</h3><p>意味を4択で当てる腕試し。覚えたかどうかをサクッと確認。</p></div>
+      </div>
+
+      <div class="group-label reveal">スピーキング学習</div>
+      <div class="feat">
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 19v3"/></svg></div><h3>瞬間英作文</h3><p>日本語→英語を声で。AIが○△×で採点＋添削＋言い換え。カードの例文や、テーマ（文法・場面）からも出題。</p></div>
+        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.4 9 9 0 0 1-4-1l-4 1 1-3.5a8.38 8.38 0 0 1-1-4A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></div><h3>独り言英会話（1分スピーチ）</h3><p>豊富なお題から1分間アウトプット。AIが文法・ニュアンスを直し、より自然で豊かな別表現まで提案。</p></div>
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L19 8.5l-3.5 3.4.8 5.1L12 14.8 7.7 17l.8-5.1L5 8.5l5.1-.9z"/></svg></div><h3>AIで例文作成・チューター</h3><p>日本語を入れれば英語表現を3つ、英語を入れれば例文を3つ生成。添削・翻訳・ニュアンス解説も会話形式で。</p></div>
+        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg></div><h3>ノート</h3><p>単語カードと文章メモを自由に保存。フォルダ整理、発音の読み上げ、AIによる意味・例文の自動生成つき。</p></div>
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 4v5h-5"/></svg></div><h3>履歴で復習</h3><p>瞬間英作文とスピーチの結果を保存。あとから何度でも振り返って復習できます。</p></div>
+        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></svg></div><h3>アプリのように使える</h3><p>ホーム画面に追加すれば全画面でアプリ感覚。暗記・クイズ・読み上げはオフラインでも動きます。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="compare" class="band">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Why Sprout</span>
+        <h2>スピーキング特化の学習法を<span class="big">まるごと</span>、<br>さらに単語の土台まで。</h2>
+        <p>「瞬間英作文 × 独り言英会話」という王道のアウトプット学習に、覚える・思い出すための単語学習を一気通貫で。価格は約1/10です。</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table>
+          <thead><tr><th>機能</th><th class="us">Sprout</th><th>スピフル（参考）</th></tr></thead>
+          <tbody>
+            <tr><th>瞬間英作文</th><td class="us">○</td><td class="yes">○</td></tr>
+            <tr><th>独り言英会話（1分スピーチ）</th><td class="us">○</td><td class="yes">○</td></tr>
+            <tr><th>AIによる添削・フィードバック</th><td class="us">○ ＋言い換え提案</td><td class="yes">○</td></tr>
+            <tr><th>単語・文法の土台づくり（SRS・クイズ）</th><td class="us">○</td><td class="no">対象外（発話特化）</td></tr>
+            <tr><th>対応シーン</th><td class="us">日常＋ビジネス</td><td>ビジネス中心</td></tr>
+            <tr><th>AIチャット（翻訳・ニュアンス・例文）</th><td class="us">○</td><td class="no">—</td></tr>
+            <tr><th>単語・文章をノートに保存</th><td class="us">○</td><td class="no">—</td></tr>
+            <tr><th>使い方</th><td class="us">ブラウザ／ホーム画面に追加</td><td>アプリ</td></tr>
+            <tr><th>月額</th><td class="us price-cell">¥500</td><td class="price-cell">¥5,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note reveal">※公開情報（2026年時点）にもとづく一般的な比較です。サービス内容・料金は変更される場合があるため、各社の最新情報は公式サイトをご確認ください。SproutはSUPIFUL（スピフル）とは無関係の独立したサービスです。</p>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section id="price">
+    <div class="wrap">
+      <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+        <span class="kicker">Pricing</span>
+        <h2>シンプルに、<span class="big">月500円</span>。</h2>
+        <p style="margin-left:auto;margin-right:auto;">続けられる価格だから、毎日の習慣になる。まずは気軽に始めてみてください。</p>
+      </div>
+      <div class="price-card reveal">
+        <div class="ribbon">月500円</div>
+        <div class="price-amt">¥500<small>／月</small></div>
+        <div class="price-sub">いつでも解約OK・追加課金なし</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 単語学習（SRS・プリセット・クイズ）が使い放題</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 瞬間英作文・1分スピーチをAIが添削</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> AIチャット（例文作成・翻訳・ニュアンス）</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> ノート保存・学習履歴・読み上げ</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> ホーム画面に追加して、どこでも</li>
+        </ul>
+        <a class="btn btn-primary" style="width:100%;padding:15px" href="#top">使ってみる</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band">
+    <div class="wrap faq">
+      <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+        <span class="kicker">FAQ</span>
+        <h2>よくある質問</h2>
+      </div>
+      <details class="reveal"><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザで開いて使えます。スマホでは「ホーム画面に追加」すると、全画面でアプリのように起動できます。</p></details>
+      <details class="reveal"><summary>オフラインでも使えますか？</summary><p>単語の暗記・4択クイズ・読み上げはオフラインでも動きます。AIの採点・添削・例文生成はインターネット接続が必要です。</p></details>
+      <details class="reveal"><summary>AIはどんなことをしてくれますか？</summary><p>瞬間英作文では○△×の採点と添削・言い換え、1分スピーチでは文法やニュアンスの修正に加えて「より自然で豊かな別表現」を提案します。単語カードの意味・例文も自動生成できます。</p></details>
+      <details class="reveal"><summary>初心者でも大丈夫ですか？</summary><p>はい。発話練習だけでなく、単語・フレーズを覚える土台づくりから始められるので、まだ英語が口から出てこない段階でも取り組めます。</p></details>
+      <details class="reveal"><summary>自分のデータはどこに保存されますか？</summary><p>あなたの単語やノートは端末内に保存され、他の人と共有されることはありません。書き出し（バックアップ）にも対応しています。</p></details>
+      <details class="reveal"><summary>解約はできますか？</summary><p>いつでも解約できます。追加課金はありません。</p></details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="wrap">
+      <div class="cta-final reveal">
+        <svg class="leaf-bg" viewBox="0 0 48 48" fill="none"><path d="M24 26C24 18 18 13 9 13c0 8 6 13 15 13Z" fill="#F4F1E8"/><path d="M24 22c0-7 5-12 14-12 0 7-5 12-14 12Z" fill="#F4F1E8"/></svg>
+        <h2>今日から、英語を育てよう。</h2>
+        <p>1日数分の反復で、「言いたいことが英語で出てくる」自分へ。月500円、いつでも解約OK。</p>
+        <a class="btn btn-primary" href="#top">使ってみる</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="frow">
+      <a class="logo" href="#top">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M24 42V22" stroke="#234E42" stroke-width="3" stroke-linecap="round"/><path d="M24 26C24 18 18 13 9 13c0 8 6 13 15 13Z" fill="#2F6F5E"/><path d="M24 22c0-7 5-12 14-12 0 7-5 12-14 12Z" fill="#E6A94B"/></svg>
+        Sprout
+      </a>
+      <span>© 2026 Sprout</span>
+    </div>
+    <p class="disc">本ページは英語学習アプリ「Sprout（スプラウト）」の紹介ページです。記載の機能・料金は予告なく変更される場合があります。比較表は公開情報（2026年時点）にもとづく一般的な比較であり、SUPIFUL（スピフル）は各社の登録商標です。SproutはSUPIFULとは資本・運営関係のない独立したサービスです。AI機能の出力は誤りを含むことがあります。</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var io;
+    if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      },{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    }
+  })();
+</script>
+</body>
+</html>
