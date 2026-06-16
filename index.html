@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sprout（スプラウト）— 話せる英語を育てる、月500円の英語アプリ</title>
-<meta name="description" content="単語の暗記から、瞬間英作文・1分スピーチのアウトプットまで。AIがその場で添削する英語学習アプリ。インストール不要、月500円。" />
+<title>Sprout（スプラウト）— 単語・熟語・ノート・スピーキングをひとつに。月500円の英語アプリ</title>
+<meta name="description" content="瞬間英作文・独り言英会話・英語日記のアウトプットに、単語/熟語学習・ノート・AI添削まで統合。インストール不要、月500円〜。" />
+<meta name="theme-color" content="#2F6F5E" />
+<link rel="apple-touch-icon" href="icon-180.png" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%232F6F5E'/%3E%3Cpath d='M90 138V74' stroke='%23F6F4EE' stroke-width='9' stroke-linecap='round'/%3E%3Cpath d='M90 88C90 64 109 49 130 49C130 73 111 88 90 88Z' fill='%23F2B33D'/%3E%3Cpath d='M90 100C90 81 75 69 58 69C58 88 73 100 90 100Z' fill='%23F6F4EE'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -112,6 +115,60 @@
   .group-label{font-family:var(--font-en);font-style:italic;font-size:1.05rem;color:var(--green);font-weight:600;margin:6px 0 14px;display:flex;align-items:center;gap:10px;}
   .group-label::after{content:"";flex:1;height:1px;background:var(--line);}
 
+  /* showcase (feature screenshots) */
+  .showcase{display:grid;gap:50px;}
+  .show-row{display:grid;gap:26px;grid-template-columns:1fr;align-items:center;}
+  @media(min-width:860px){ .show-row{grid-template-columns:.95fr 1.05fr;gap:50px;} .show-row.rev .shot-wrap{order:2;} }
+  .show-text .kicker{color:var(--amber-d);}
+  .show-text h3{font-size:clamp(1.3rem,3.4vw,1.7rem);font-weight:900;line-height:1.4;margin:8px 0 12px;letter-spacing:-.01em;}
+  .show-text h3 b{color:var(--green);}
+  .show-text>p{color:var(--ink-2);font-size:1rem;margin-bottom:16px;}
+  .flow{display:grid;gap:10px;}
+  .flow li{display:flex;gap:11px;align-items:flex-start;list-style:none;font-size:.95rem;color:var(--ink);}
+  .flow .n{flex:none;width:24px;height:24px;border-radius:50%;background:var(--green-soft);color:var(--green-d);font-family:var(--font-en);font-weight:600;font-size:.85rem;display:grid;place-items:center;margin-top:1px;}
+
+  .shot-wrap{position:relative;}
+  .shot-wrap .blob{position:absolute;inset:-6% -8% auto auto;width:55%;height:60%;background:radial-gradient(closest-side,rgba(230,169,75,.20),transparent);filter:blur(8px);z-index:-1;}
+  .shot-wrap .blob2{position:absolute;inset:auto auto -10% -10%;width:55%;height:55%;background:radial-gradient(closest-side,rgba(47,111,94,.16),transparent);filter:blur(8px);z-index:-1;}
+  .shot{background:var(--surface);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-lg);padding:18px 16px;max-width:360px;margin:0 auto;}
+  .shot .bar{display:flex;align-items:center;gap:9px;color:var(--ink-3);font-size:.74rem;font-weight:700;margin-bottom:14px;}
+  .shot .bar .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);}
+  .shot .bar .grow{flex:1;height:5px;border-radius:5px;background:var(--surface-2);overflow:hidden;}
+  .shot .bar .grow i{display:block;height:100%;background:var(--green);}
+  .m-arrow{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--amber-d);font-size:.78rem;font-weight:700;margin:12px 0;}
+  .m-arrow::before,.m-arrow::after{content:"";height:1px;flex:1;background:var(--line);}
+  .m-bubble{background:var(--surface-2);border-radius:14px;padding:12px 14px;font-family:var(--font-en);font-size:1.05rem;}
+  .m-bubble.you{background:var(--green-soft);}
+  .m-card{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--paper);}
+  .m-term{font-family:var(--font-en);font-weight:600;font-size:1.4rem;color:var(--ink);display:flex;align-items:center;gap:8px;}
+  .m-term .spk{width:26px;height:26px;border-radius:8px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;flex:none;}
+  .m-term .spk svg{width:15px;height:15px;}
+  .m-pron{font-family:var(--font-en);color:var(--ink-3);font-size:.92rem;margin:2px 0 8px;}
+  .m-chip{display:inline-block;font-size:.72rem;font-weight:700;color:var(--green-d);background:var(--green-soft);border-radius:6px;padding:2px 8px;margin-bottom:8px;}
+  .m-lab{font-size:.7rem;font-weight:700;color:var(--ink-3);margin-top:8px;}
+  .m-val{font-size:.95rem;}
+  .m-val.en{font-family:var(--font-en);}
+  .m-save{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border-radius:999px;font-size:.82rem;font-weight:700;padding:8px 14px;margin-top:12px;}
+  .m-save svg{width:14px;height:14px;}
+  .m-fix{background:var(--green-soft);border-radius:10px;padding:10px 12px;font-family:var(--font-en);font-size:1rem;margin-top:4px;}
+  .m-note{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px;}
+  .m-note span{font-size:.74rem;background:var(--amber-soft);color:var(--amber-d);border-radius:6px;padding:3px 8px;font-weight:600;}
+  .m-jp{font-size:1.3rem;font-weight:700;line-height:1.5;margin:4px 0 14px;}
+  .m-mic{width:84px;height:84px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;margin:4px auto 10px;box-shadow:0 8px 20px rgba(47,111,94,.16);}
+  .m-mic svg{width:34px;height:34px;}
+  .m-cap{text-align:center;color:var(--ink-2);font-size:.84rem;font-weight:600;margin-bottom:12px;}
+  .m-ref{background:var(--surface-2);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:10px 13px;margin-top:8px;}
+  .m-grade{display:flex;gap:8px;margin-top:12px;}
+  .m-grade b{flex:1;text-align:center;border-radius:10px;padding:9px;font-weight:700;font-size:.9rem;border:1.5px solid var(--line);}
+  .m-grade b.o{border-color:var(--green);background:var(--green-soft);color:var(--green);}
+  .m-grade b.x{color:var(--ink-3);}
+  .m-rrow{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--line);font-size:.95rem;}
+  .m-rrow:last-child{border-bottom:none;}
+  .m-rrow .v{font-weight:800;font-size:1.1rem;width:18px;text-align:center;}
+  .m-rrow .v.o{color:var(--green);} .m-rrow .v.x{color:#c0492f;}
+  .m-rrow .tm{font-family:var(--font-en);font-weight:600;flex:1;}
+  .m-rrow .mn{color:var(--ink-3);font-size:.85rem;}
+
   /* compare */
   .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);}
   table{border-collapse:collapse;width:100%;min-width:560px;background:var(--surface);}
@@ -135,6 +192,26 @@
   .price-list{text-align:left;display:grid;gap:11px;margin:0 0 24px;}
   .price-list li{display:flex;gap:11px;align-items:flex-start;list-style:none;font-size:.95rem;}
   .price-list svg{width:19px;height:19px;color:var(--green);flex:none;margin-top:3px;}
+
+  /* two plans */
+  .plans{display:grid;gap:20px;grid-template-columns:1fr;max-width:920px;margin:0 auto;align-items:start;}
+  @media(min-width:760px){ .plans{grid-template-columns:1fr 1fr;} }
+  .plan{background:var(--surface);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:30px 26px;position:relative;overflow:hidden;}
+  .plan.featured{border:2px solid var(--green);box-shadow:var(--shadow-lg);}
+  .plan .tag{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:.82rem;letter-spacing:.04em;padding:6px 14px;border-radius:999px;background:var(--green-soft);color:var(--green-d);}
+  .plan.featured .tag{background:var(--green);color:#fff;}
+  .plan .amt{font-family:var(--font-en);font-weight:600;font-size:2.9rem;color:var(--green);line-height:1;margin:16px 0 2px;}
+  .plan .amt small{font-size:1rem;color:var(--ink-2);font-family:var(--font-jp);font-weight:400;}
+  .plan .amt .pre{font-size:1rem;color:var(--ink-3);font-family:var(--font-jp);margin-right:4px;}
+  .plan .billed{color:var(--ink-3);font-size:.85rem;margin-bottom:16px;}
+  .terms{display:grid;gap:8px;margin:0 0 18px;}
+  .term{display:flex;justify-content:space-between;align-items:baseline;gap:10px;background:var(--surface-2);border-radius:12px;padding:11px 14px;font-size:.92rem;}
+  .term.best{background:var(--green-soft);border:1px solid var(--green);}
+  .term .per{font-family:var(--font-en);font-weight:600;color:var(--green-d);}
+  .term .save{font-size:.74rem;color:var(--amber-d);font-weight:700;margin-left:6px;}
+  .plan .price-list{margin:6px 0 22px;}
+  .plan .price-list li{font-size:.92rem;}
+  .ribbon-flag{position:absolute;top:18px;right:-36px;transform:rotate(38deg);background:var(--amber);color:#3a2e0c;font-weight:800;font-size:.72rem;padding:5px 44px;}
 
   /* faq */
   .faq{max-width:760px;margin:0 auto;}
@@ -172,7 +249,7 @@
     </a>
     <nav class="links">
       <a href="#method">学習法</a>
-      <a href="#features">機能</a>
+      <a href="#showcase">機能</a>
       <a href="#compare">比較</a>
       <a href="#price">料金</a>
     </nav>
@@ -186,17 +263,17 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="reveal">
-        <span class="eyebrow">AIスピーキング × 単語アプリ</span>
-        <h1>話せる英語は、毎日の小さな反復で<span class="mark">芽を出す</span>。</h1>
-        <p class="lead">単語の暗記から、<b>瞬間英作文</b>・<b>1分スピーチ</b>のアウトプットまで。話した英語をAIがその場で添削して、もっと自然な言い回しまで教えてくれる。スマホのホーム画面に追加するだけ、<b>月500円</b>の英語トレーニング。</p>
+        <span class="eyebrow">スピーキング × 単語・熟語 × ノート</span>
+        <h1>話す・覚える・書きとめる。<br>英語学習を<span class="mark">ひとつに</span>。</h1>
+        <p class="lead"><b>瞬間英作文・独り言英会話・英語日記</b>といったアウトプット練習に、<b>単語・熟語学習</b>と<b>ノート</b>、AIによる添削までを1つに統合。話した英語・書いた英語をAIがその場で直し、自然な言い回しまで提案します。ホーム画面に追加するだけ、<b>月500円〜</b>。</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#price">使ってみる</a>
-          <a class="btn btn-ghost" href="#method">仕組みを見る</a>
+          <a class="btn btn-ghost" href="#showcase">機能を見る</a>
         </div>
         <div class="chips">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> インストール不要</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> オフラインでも暗記OK</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 日常＋ビジネス対応</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 単語・熟語・ノートも統合</span>
         </div>
       </div>
 
@@ -228,7 +305,134 @@
       <div class="steps">
         <div class="step reveal"><div class="num">01</div><h3>ためる</h3><p>単語・フレーズを忘却曲線（SRS）で暗記。プリセット教材や4択クイズで土台をつくる。</p></div>
         <div class="step reveal"><div class="num">02</div><h3>引き出す</h3><p>瞬間英作文で、日本語を見たらすぐ英語を声に。AIが○△×で採点し、言い換えも提案。</p></div>
-        <div class="step reveal"><div class="num">03</div><h3>話し切る</h3><p>独り言英会話で、お題について1分スピーチ。AIが文法・ニュアンスを添削し、より自然な表現を提示。</p></div>
+        <div class="step reveal"><div class="num">03</div><h3>話し切る・書きとめる</h3><p>独り言英会話で1分スピーチ。さらに英語日記で書いた文もAIが添削。話す・書く両方のアウトプットを回せます。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section id="showcase">
+    <div class="wrap">
+      <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+        <span class="kicker">Features in action</span>
+        <h2>主な機能を、<span class="big">画面で</span>。</h2>
+        <p style="margin-left:auto;margin-right:auto;">実際の使い方を、具体例といっしょに見てみましょう。</p>
+      </div>
+
+      <div class="showcase">
+
+        <!-- 1. メモ -> AIカード化 -->
+        <div class="show-row reveal">
+          <div class="show-text">
+            <span class="kicker">Memo → AI Card</span>
+            <h3>気になった単語を<b>サクッとメモ</b>、<br>あとはAIがカードに仕上げる。</h3>
+            <p>覚えたい単語やフレーズを思いついたら、まずはメモするだけ。AIが意味・発音・例文・類義語まで自動で作って、そのまま単語カードとして保存できます。辞書を引く手間なく、自分だけの単語帳がどんどん育ちます。</p>
+            <ul class="flow">
+              <li><span class="n">1</span><div>単語やフレーズをそのまま入力（例：<b>serendipity</b>）</div></li>
+              <li><span class="n">2</span><div>AIが意味・発音記号・例文・類義語を生成</div></li>
+              <li><span class="n">3</span><div>ワンタップでカード化。読み上げ＆復習もすぐに</div></li>
+            </ul>
+          </div>
+          <div class="shot-wrap reveal">
+            <div class="blob"></div><div class="blob2"></div>
+            <div class="shot">
+              <div class="bar"><span class="dot"></span>AI ・ 単語をカード化</div>
+              <div class="m-bubble you">serendipity</div>
+              <div class="m-arrow">AIが意味・発音・例文を生成</div>
+              <div class="m-card">
+                <div class="m-term">serendipity <span class="spk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M19 12a7 7 0 0 0-3-5.7"/></svg></span></div>
+                <div class="m-pron">/ˌserənˈdɪpəti/</div>
+                <span class="m-chip">名詞</span>
+                <div class="m-lab">意味</div><div class="m-val">思いがけない幸運（な発見）</div>
+                <div class="m-lab">例文</div>
+                <div class="m-val en">Finding this café was pure serendipity.</div>
+                <div class="m-val" style="color:var(--ink-2)">このカフェとの出会いは幸運だった。</div>
+                <div class="m-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> カードに保存</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 瞬間英作文 -->
+        <div class="show-row rev reveal">
+          <div class="show-text">
+            <span class="kicker">Instant composition</span>
+            <h3>日本語を見て、<b>すぐ英語で言う</b>。<br>答えを表示して自己採点。</h3>
+            <p>お題の日本語を見たら、声に出す（または入力）。「答えを表示」でお手本を確認し、自分で○×をつけます。AIをオンにすれば、添削や自然な言い換えも表示。オフラインでも自己採点で続けられます。</p>
+            <ul class="flow">
+              <li><span class="n">1</span><div>日本語のお題を見て、英語で発話・入力</div></li>
+              <li><span class="n">2</span><div>「答えを表示」でお手本＆AI添削をチェック</div></li>
+              <li><span class="n">3</span><div>○正解／×不正解を自分で記録（10問→正誤一覧）</div></li>
+            </ul>
+          </div>
+          <div class="shot-wrap reveal">
+            <div class="blob"></div><div class="blob2"></div>
+            <div class="shot">
+              <div class="bar"><span>✕</span><span class="grow"><i style="width:20%"></i></span><span>2 / 10</span></div>
+              <div class="m-lab" style="margin-top:0">日本語を英語に（文）</div>
+              <div class="m-jp">人脈を活用できる。</div>
+              <div class="m-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 19v3"/></svg></div>
+              <div class="m-cap">タップして話す</div>
+              <div class="m-ref"><div class="m-lab" style="margin-top:0">お手本</div><div class="m-val en">You can leverage your network.</div></div>
+              <div class="m-grade"><b class="o">○ 正解</b><b class="x">× 不正解</b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 英語日記 -->
+        <div class="show-row reveal">
+          <div class="show-text">
+            <span class="kicker">English diary</span>
+            <h3>その日の出来事を<b>英語で日記</b>。<br>AIが直して、訳もつける。</h3>
+            <p>英語で書いてみるだけで、AIが自然な英文に添削。日本語訳と「直したポイント」までまとめてくれます。日付・タイトルをつけてノートに保存できるので、続けるほど自分の成長記録になります。</p>
+            <ul class="flow">
+              <li><span class="n">1</span><div>今日のことを英語で書く（間違いはOK）</div></li>
+              <li><span class="n">2</span><div>AIが添削後の英文・日本語訳・フィードバックを返す</div></li>
+              <li><span class="n">3</span><div>日付つきでノートに保存、あとで読み返して復習</div></li>
+            </ul>
+          </div>
+          <div class="shot-wrap reveal">
+            <div class="blob"></div><div class="blob2"></div>
+            <div class="shot">
+              <div class="bar"><span class="dot"></span>AI ・ 英語日記</div>
+              <div class="m-bubble you">Today I go to library and study english.</div>
+              <div class="m-arrow">AIが添削</div>
+              <div class="m-lab" style="margin-top:0">✏️ 添削後の英語</div>
+              <div class="m-fix">Today I went to the library and studied English.</div>
+              <div class="m-lab">🇯🇵 日本語訳</div>
+              <div class="m-val">今日は図書館へ行って英語を勉強しました。</div>
+              <div class="m-note"><span>過去形に注意</span><span>English は大文字</span></div>
+              <div class="m-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> 日記に保存</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 単語・熟語学習 -->
+        <div class="show-row rev reveal">
+          <div class="show-text">
+            <span class="kicker">Vocabulary &amp; idioms</span>
+            <h3>覚える土台は、<b>10問でサクッと</b>。<br>終わったら正誤一覧で復習。</h3>
+            <p>自分の単語帳や、日常・ビジネス・TOEIC・英検などのプリセットを、フラッシュカードや4択クイズで。学習スタイル（忘却曲線・ランダム・苦手優先）を選べて、1回10問。終わったあとは正誤一覧で、間違えた単語をタップして意味を確認できます。</p>
+            <ul class="flow">
+              <li><span class="n">1</span><div>カテゴリと学習スタイルを選ぶ（忘却曲線など）</div></li>
+              <li><span class="n">2</span><div>10問だけ集中。熟語はフラッシュ＆試験形式の穴埋め</div></li>
+              <li><span class="n">3</span><div>正誤一覧で振り返り。苦手は自動で優先出題</div></li>
+            </ul>
+          </div>
+          <div class="shot-wrap reveal">
+            <div class="blob"></div><div class="blob2"></div>
+            <div class="shot">
+              <div class="bar"><span>✕</span><span class="grow"><i style="width:100%"></i></span><span>結果</span></div>
+              <div style="text-align:center;margin:2px 0 10px"><div style="font-family:var(--font-en);font-weight:600;font-size:1.5rem;color:var(--green)">できた 8 / 10</div><div style="color:var(--ink-3);font-size:.8rem">日常英会話 / 初級 ・ 連続 5日 🔥</div></div>
+              <div class="m-lab" style="margin-top:0">学習した単語（タップで意味）</div>
+              <div class="m-rrow"><span class="v o">○</span><span class="tm">reluctant</span><span class="mn">気が進まない</span></div>
+              <div class="m-rrow"><span class="v x">×</span><span class="tm">leverage</span><span class="mn">〜を活用する</span></div>
+              <div class="m-rrow"><span class="v o">○</span><span class="tm">on the same page</span><span class="mn">認識が一致して</span></div>
+              <div class="m-rrow"><span class="v o">○</span><span class="tm">come up with</span><span class="mn">〜を思いつく</span></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -237,9 +441,9 @@
   <section id="features">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="kicker">Features</span>
-        <h2>1つのアプリに、<span class="big">必要な練習</span>を全部。</h2>
-        <p>単語の土台づくりから、声に出すアウトプット、AIによる添削・復習まで。学習タブは目的別に整理されています。</p>
+        <span class="kicker">All features</span>
+        <h2>ほかにも、<span class="big">学びを支える</span>機能。</h2>
+        <p>目的別に整理された学習タブ。単語の土台づくりから、声に出すアウトプット、書く・記録する、復習まで。</p>
       </div>
 
       <div class="group-label reveal">単語学習</div>
@@ -247,16 +451,24 @@
         <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><h3>オリジナルデッキ</h3><p>自分の単語帳を、忘却曲線に沿った復習か、追加した順かを選んで学習。</p></div>
         <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM19 3v18"/></svg></div><h3>用意した単語</h3><p>日常会話・TOEICなどのプリセット教材。すぐに学習を始められます。</p></div>
         <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7a6 6 0 0 1-12 0ZM6 5H3v2a3 3 0 0 0 3 3M18 5h3v2a3 3 0 0 1-3 3M9 21h6M12 15v6"/></svg></div><h3>4択クイズ</h3><p>意味を4択で当てる腕試し。覚えたかどうかをサクッと確認。</p></div>
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>熟語・イディオム</h3><p>日常・ビジネス・TOEIC・英検などの熟語を、フラッシュカードと4択穴埋め（試験形式）で習得。</p></div>
+        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div><h3>選べる学習スタイル</h3><p>忘却曲線・ランダム・苦手優先から選択。1回10問＋正誤一覧で、すき間時間にちょうどいい量。</p></div>
       </div>
 
       <div class="group-label reveal">スピーキング学習</div>
-      <div class="feat">
-        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 19v3"/></svg></div><h3>瞬間英作文</h3><p>日本語→英語を声で。AIが○△×で採点＋添削＋言い換え。カードの例文や、テーマ（文法・場面）からも出題。</p></div>
+      <div class="feat" style="margin-bottom:34px">
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 19v3"/></svg></div><h3>瞬間英作文</h3><p>日本語→英語を声で。「答えを表示」でお手本を確認し、自分で○×。AIがあれば添削・言い換えも。オフラインでも採点できます。</p></div>
         <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.4 9 9 0 0 1-4-1l-4 1 1-3.5a8.38 8.38 0 0 1-1-4A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></div><h3>独り言英会話（1分スピーチ）</h3><p>豊富なお題から1分間アウトプット。AIが文法・ニュアンスを直し、より自然で豊かな別表現まで提案。</p></div>
-        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L19 8.5l-3.5 3.4.8 5.1L12 14.8 7.7 17l.8-5.1L5 8.5l5.1-.9z"/></svg></div><h3>AIで例文作成・チューター</h3><p>日本語を入れれば英語表現を3つ、英語を入れれば例文を3つ生成。添削・翻訳・ニュアンス解説も会話形式で。</p></div>
-        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg></div><h3>ノート</h3><p>単語カードと文章メモを自由に保存。フォルダ整理、発音の読み上げ、AIによる意味・例文の自動生成つき。</p></div>
-        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 4v5h-5"/></svg></div><h3>履歴で復習</h3><p>瞬間英作文とスピーチの結果を保存。あとから何度でも振り返って復習できます。</p></div>
-        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></svg></div><h3>アプリのように使える</h3><p>ホーム画面に追加すれば全画面でアプリ感覚。暗記・クイズ・読み上げはオフラインでも動きます。</p></div>
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L19 8.5l-3.5 3.4.8 5.1L12 14.8 7.7 17l.8-5.1L5 8.5l5.1-.9z"/></svg></div><h3>AIチューター</h3><p>例文作成・添削・翻訳・カード化を会話形式で。日本語を入れれば英語表現を、英語を入れれば例文を生成。</p></div>
+      </div>
+
+      <div class="group-label reveal">書く・記録する</div>
+      <div class="feat">
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div><h3>英語日記</h3><p>その日の出来事を英語で。AIが添削後の英文・日本語訳・フィードバックを返し、日付つきでノートに保存できます。</p></div>
+        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg></div><h3>ノート</h3><p>単語カード・文章メモ・英語日記をフォルダで整理。並べ替えや別フォルダへの移動、発音読み上げ、AIでの意味・例文生成つき。</p></div>
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 4v5h-5"/></svg></div><h3>履歴で復習</h3><p>瞬間英作文・スピーチ・英語日記の結果を保存。あとから何度でも振り返って復習できます。</p></div>
+        <div class="card reveal"><div class="ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zM2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><h3>クラウド同期</h3><p>Google／メールでログインすれば、単語・ノート・日記・学習進捗が複数端末で同期。オフラインで学んだ分も後から自動で同期。</p></div>
+        <div class="card reveal"><div class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></svg></div><h3>アプリのように使える</h3><p>ホーム画面に追加すれば全画面でアプリ感覚。暗記・クイズ・読み上げはオフラインでも動きます。</p></div>
       </div>
     </div>
   </section>
@@ -266,26 +478,27 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="kicker">Why Sprout</span>
-        <h2>スピーキング特化の学習法を<span class="big">まるごと</span>、<br>さらに単語の土台まで。</h2>
-        <p>「瞬間英作文 × 独り言英会話」という王道のアウトプット学習に、覚える・思い出すための単語学習を一気通貫で。価格は約1/10です。</p>
+        <h2>大手スピーキングアプリの強みを<span class="big">まるごと</span>、<br>さらに単語・ノートまで1つに。</h2>
+        <p>「瞬間英作文 × 独り言英会話」という王道のアウトプット学習に、単語・熟語の土台づくり、英語日記、ノートまでを統合。料金は大手スピーキング特化アプリ（S社）の約1/10からです。</p>
       </div>
       <div class="table-wrap reveal">
         <table>
-          <thead><tr><th>機能</th><th class="us">Sprout</th><th>スピフル（参考）</th></tr></thead>
+          <thead><tr><th>機能</th><th class="us">Sprout</th><th>大手S社（参考）</th></tr></thead>
           <tbody>
-            <tr><th>瞬間英作文</th><td class="us">○</td><td class="yes">○</td></tr>
+            <tr><th>瞬間英作文（口頭英作文）</th><td class="us">○</td><td class="yes">○</td></tr>
             <tr><th>独り言英会話（1分スピーチ）</th><td class="us">○</td><td class="yes">○</td></tr>
             <tr><th>AIによる添削・フィードバック</th><td class="us">○ ＋言い換え提案</td><td class="yes">○</td></tr>
-            <tr><th>単語・文法の土台づくり（SRS・クイズ）</th><td class="us">○</td><td class="no">対象外（発話特化）</td></tr>
-            <tr><th>対応シーン</th><td class="us">日常＋ビジネス</td><td>ビジネス中心</td></tr>
-            <tr><th>AIチャット（翻訳・ニュアンス・例文）</th><td class="us">○</td><td class="no">—</td></tr>
-            <tr><th>単語・文章をノートに保存</th><td class="us">○</td><td class="no">—</td></tr>
+            <tr><th>英語日記（AI添削）</th><td class="us">○</td><td class="no">—</td></tr>
+            <tr><th>単語・熟語学習（SRS・クイズ・試験形式）</th><td class="us">○</td><td class="no">対象外（発話特化）</td></tr>
+            <tr><th>ノートで保存・整理（フォルダ）</th><td class="us">○</td><td class="no">—</td></tr>
+            <tr><th>AIチャット（翻訳・例文・カード化）</th><td class="us">○</td><td class="no">—</td></tr>
+            <tr><th>対応シーン</th><td class="us">日常＋ビジネス＋試験</td><td>ビジネス中心</td></tr>
             <tr><th>使い方</th><td class="us">ブラウザ／ホーム画面に追加</td><td>アプリ</td></tr>
-            <tr><th>月額</th><td class="us price-cell">¥500</td><td class="price-cell">¥5,000</td></tr>
+            <tr><th>月額（最安）</th><td class="us price-cell">¥500〜</td><td class="price-cell">約¥4,980</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="note reveal">※公開情報（2026年時点）にもとづく一般的な比較です。サービス内容・料金は変更される場合があるため、各社の最新情報は公式サイトをご確認ください。SproutはSUPIFUL（スピフル）とは無関係の独立したサービスです。</p>
+      <p class="note reveal">※公開情報（2026年時点）にもとづく一般的な比較です。「S社」は特定企業の社名・商標を示すものではありません。サービス内容・料金は変更される場合があるため、各社の最新情報は公式サイトをご確認ください。本サービスは他社と資本・運営関係のない独立したサービスです。</p>
     </div>
   </section>
 
@@ -294,22 +507,50 @@
     <div class="wrap">
       <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
         <span class="kicker">Pricing</span>
-        <h2>シンプルに、<span class="big">月500円</span>。</h2>
-        <p style="margin-left:auto;margin-right:auto;">続けられる価格だから、毎日の習慣になる。まずは気軽に始めてみてください。</p>
+        <h2>年間プランなら、<span class="big">月500円</span>から。</h2>
+        <p style="margin-left:auto;margin-right:auto;">まずはライトプランで。最新モデルのAIをたっぷり使いたい方はプレミアムへ。いつでも解約OK。</p>
       </div>
-      <div class="price-card reveal">
-        <div class="ribbon">月500円</div>
-        <div class="price-amt">¥500<small>／月</small></div>
-        <div class="price-sub">いつでも解約OK・追加課金なし</div>
-        <ul class="price-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 単語学習（SRS・プリセット・クイズ）が使い放題</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 瞬間英作文・1分スピーチをAIが添削</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> AIチャット（例文作成・翻訳・ニュアンス）</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> ノート保存・学習履歴・読み上げ</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> ホーム画面に追加して、どこでも</li>
-        </ul>
-        <a class="btn btn-primary" style="width:100%;padding:15px" href="#top">使ってみる</a>
+      <div class="plans reveal">
+
+        <div class="plan">
+          <span class="tag">ライト</span>
+          <div class="amt"><span class="pre">月</span>¥500<small>〜／月</small></div>
+          <div class="billed">12ヶ月プランの場合（年額 ¥6,000）</div>
+          <div class="terms">
+            <div class="term best"><span>12ヶ月プラン</span><span><span class="per">¥500</span>/月<span class="save">いちばんお得</span></span></div>
+            <div class="term"><span>3ヶ月プラン</span><span><span class="per">¥800</span>/月</span></div>
+            <div class="term"><span>1ヶ月プラン</span><span><span class="per">¥1,200</span>/月</span></div>
+          </div>
+          <ul class="price-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 単語・熟語学習、4択クイズが使い放題</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 瞬間英作文・1分スピーチ・英語日記</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> AIによる採点・添削・例文（標準モデル）</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> ノート・クラウド同期・読み上げ</li>
+          </ul>
+          <a class="btn btn-primary" style="width:100%;padding:15px" href="#top">ライトで始める</a>
+        </div>
+
+        <div class="plan featured">
+          <div class="ribbon-flag">おすすめ</div>
+          <span class="tag">プレミアム</span>
+          <div class="amt"><span class="pre">月</span>¥1,500<small>〜／月</small></div>
+          <div class="billed">12ヶ月プランの場合（年額 ¥18,000）</div>
+          <div class="terms">
+            <div class="term best"><span>12ヶ月プラン</span><span><span class="per">¥1,500</span>/月<span class="save">いちばんお得</span></span></div>
+            <div class="term"><span>3ヶ月プラン</span><span><span class="per">¥2,400</span>/月</span></div>
+            <div class="term"><span>1ヶ月プラン</span><span><span class="per">¥3,600</span>/月</span></div>
+          </div>
+          <ul class="price-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <b>ライトプランの全機能</b></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <b>最新モデルのAI</b>に無制限アクセス</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 添削・英語日記・スピーチをより高精度に</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 回数を気にせず、たっぷり練習</li>
+          </ul>
+          <a class="btn btn-primary" style="width:100%;padding:15px" href="#top">プレミアムで始める</a>
+        </div>
+
       </div>
+      <p class="note reveal" style="text-align:center;max-width:640px;margin:18px auto 0">いつでも解約OK。表示は予定価格（税込）です。最新モデルAIの「無制限」は公正利用（フェアユース）の範囲内でご利用いただけます。</p>
     </div>
   </section>
 
@@ -320,11 +561,14 @@
         <span class="kicker">FAQ</span>
         <h2>よくある質問</h2>
       </div>
+      <details class="reveal"><summary>ライトプランとプレミアムプランの違いは？</summary><p>機能はどちらも同じで、AIモデルが異なります。ライトは標準モデルのAIで採点・添削・例文が使えます。プレミアムは最新モデルのAIを公正利用の範囲で無制限に使え、添削や英語日記・スピーチの精度がより高くなります。料金はプレミアムがライトの3倍です（年間プラン：ライト月500円／プレミアム月1,500円）。</p></details>
+      <details class="reveal"><summary>料金プランの選び方は？</summary><p>長く続けるほどお得です。年間（12ヶ月）プランが最安で、ライトは月500円、3ヶ月は月800円、1ヶ月は月1,200円です。まずは試したい方は1ヶ月から、続ける見込みがある方は年間プランがおすすめです。いつでも解約できます。</p></details>
+      <details class="reveal"><summary>英語日記はどんな機能ですか？</summary><p>その日の出来事を英語で書くと、AIが添削後の自然な英文・その日本語訳・直したポイントを返します。日付とタイトルをつけてノートに保存でき、あとから読み返して復習できます。</p></details>
       <details class="reveal"><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザで開いて使えます。スマホでは「ホーム画面に追加」すると、全画面でアプリのように起動できます。</p></details>
       <details class="reveal"><summary>オフラインでも使えますか？</summary><p>単語の暗記・4択クイズ・読み上げはオフラインでも動きます。AIの採点・添削・例文生成はインターネット接続が必要です。</p></details>
-      <details class="reveal"><summary>AIはどんなことをしてくれますか？</summary><p>瞬間英作文では○△×の採点と添削・言い換え、1分スピーチでは文法やニュアンスの修正に加えて「より自然で豊かな別表現」を提案します。単語カードの意味・例文も自動生成できます。</p></details>
+      <details class="reveal"><summary>AIはどんなことをしてくれますか？</summary><p>瞬間英作文では添削・言い換え、1分スピーチでは文法やニュアンスの修正と「より自然で豊かな別表現」を提案。英語日記の添削、単語カードの意味・例文の自動生成、翻訳や例文づくりのチャットも使えます。</p></details>
       <details class="reveal"><summary>初心者でも大丈夫ですか？</summary><p>はい。発話練習だけでなく、単語・フレーズを覚える土台づくりから始められるので、まだ英語が口から出てこない段階でも取り組めます。</p></details>
-      <details class="reveal"><summary>自分のデータはどこに保存されますか？</summary><p>あなたの単語やノートは端末内に保存され、他の人と共有されることはありません。書き出し（バックアップ）にも対応しています。</p></details>
+      <details class="reveal"><summary>自分のデータはどこに保存されますか？</summary><p>ログインしない場合は、単語やノートはこの端末内だけに保存されます。Google／メールでログインすると、複数端末で同期できます。いずれも書き出し（バックアップ）に対応しています。</p></details>
       <details class="reveal"><summary>解約はできますか？</summary><p>いつでも解約できます。追加課金はありません。</p></details>
     </div>
   </section>
@@ -351,7 +595,7 @@
       </a>
       <span>© 2026 Sprout</span>
     </div>
-    <p class="disc">本ページは英語学習アプリ「Sprout（スプラウト）」の紹介ページです。記載の機能・料金は予告なく変更される場合があります。比較表は公開情報（2026年時点）にもとづく一般的な比較であり、SUPIFUL（スピフル）は各社の登録商標です。SproutはSUPIFULとは資本・運営関係のない独立したサービスです。AI機能の出力は誤りを含むことがあります。</p>
+    <p class="disc">本ページは英語学習アプリ「Sprout（スプラウト）」の紹介ページです。記載の機能・料金は予告なく変更される場合があり、表示価格は予定です。比較表は公開情報（2026年時点）にもとづく一般的な比較で、「S社」は特定企業の社名・商標を示すものではありません。各社の商標は各社に帰属します。本サービスは他社と資本・運営関係のない独立したサービスです。AI機能の出力は誤りを含むことがあります。</p>
   </div>
 </footer>
 
