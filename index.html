@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sprout（スプラウト）— 読む、から、話せるまで。英語学習の総合アプリ</title>
-<meta name="description" content="単語・熟語のインプットから、瞬間英作文・英語日記のアウトプットまで。出会った単語をカード化し、忘却曲線で反復、そのまま使って定着。学びはノート・フォルダで整理。AI搭載・インストール不要のWebアプリ。月¥980〜、連続学習と友達紹介で最大40%オフ。" />
+<meta name="description" content="単語・熟語7,000語以上（日常〜ビジネス・TOEIC・TOEFL・英検）、瞬間英作文1,000問以上。AIオリジナルカード×忘却曲線、音声認識スピーキング、ノート・フォルダ、AI添削も。単語もスピーキングも、これ一つ。インストール不要のWebアプリ。月¥980〜、最大40%オフ。" />
 <meta property="og:title" content="Sprout — 読む、から、話せるまで。" />
 <meta property="og:description" content="単語インプットからスピーキング・ライティングのアウトプットまで、ひとつのアプリで。AI搭載・インストール不要。" />
 <meta property="og:type" content="website" />
@@ -223,15 +223,15 @@
   @media(max-width:820px){.screens{grid-template-columns:1fr;gap:24px;}}
 
   /* iPhone carousel */
-  .carousel{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 22px 20px;margin:0 -22px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .carousel{display:flex;gap:22px;overflow-x:auto;padding:10px 22px 20px;margin:0 -22px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   .carousel::-webkit-scrollbar{display:none;}
-  .cslide{scroll-snap-align:center;flex:0 0 auto;width:262px;}
+  .cslide{flex:0 0 auto;width:240px;}
   .cslide .clabel{text-align:center;font-weight:800;font-size:.95rem;margin-top:16px;}
   .cslide .csub{text-align:center;font-size:.78rem;color:var(--ink-3);margin-top:3px;line-height:1.5;}
   .swipe-hint{text-align:center;color:var(--ink-3);font-size:.85rem;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;}
   .swipe-hint::before,.swipe-hint::after{content:"";height:1px;width:34px;background:var(--line);}
 
-  .iphone{width:262px;aspect-ratio:9/19.3;background:#1b1b1d;border-radius:44px;padding:10px;box-shadow:0 20px 52px rgba(40,60,50,.24),inset 0 0 0 2px rgba(255,255,255,.05);position:relative;}
+  .iphone{width:240px;aspect-ratio:9/19.3;background:#1b1b1d;border-radius:44px;padding:10px;box-shadow:0 20px 52px rgba(40,60,50,.24),inset 0 0 0 2px rgba(255,255,255,.05);position:relative;}
   .iphone .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:112px;height:25px;background:#1b1b1d;border-radius:0 0 16px 16px;z-index:4;}
   .ip-screen{width:100%;height:100%;background:var(--paper);border-radius:35px;overflow:hidden;display:flex;flex-direction:column;position:relative;}
   .ip-status{display:flex;justify-content:space-between;align-items:center;padding:11px 20px 3px;font-size:.68rem;font-weight:700;color:var(--ink);z-index:2;}
@@ -344,12 +344,117 @@
   .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
   .foot .logo{font-size:1.1rem;}
 
+  /* SRS flashcard extras */
+  .deckchip{display:inline-flex;align-items:center;gap:5px;font-size:.62rem;font-weight:800;color:var(--green);background:var(--green-soft);padding:3px 10px;border-radius:999px;align-self:center;letter-spacing:.02em;}
+  .fcard .fipa{font-family:var(--font-en);font-size:.78rem;color:var(--ink-3);}
+  .fcard .fdiv{height:1px;background:var(--line);align-self:stretch;margin:6px 6px 4px;}
+  .srs{display:flex;gap:6px;}
+  .srs span{flex:1;text-align:center;font-size:.62rem;font-weight:700;padding:8px 0;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);}
+  .srs .again{color:var(--amber-d);border-color:var(--amber);}
+  .srs .good{background:var(--green-soft);color:var(--green-d);border-color:var(--green);}
+
+  /* speech recognition (compo) */
+  .mic-wrap{display:flex;flex-direction:column;align-items:center;gap:11px;padding:8px 0 4px;}
+  .mic{width:62px;height:62px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;animation:micPulse 1.8s infinite;}
+  .mic svg{width:27px;height:27px;}
+  @keyframes micPulse{0%{box-shadow:0 0 0 0 rgba(47,111,94,.35)}70%{box-shadow:0 0 0 15px rgba(47,111,94,0)}100%{box-shadow:0 0 0 0 rgba(47,111,94,0)}}
+  .wave{display:flex;gap:3px;align-items:center;height:24px;}
+  .wave i{width:3px;height:8px;background:var(--green);border-radius:2px;animation:wv .9s infinite ease-in-out;}
+  .wave i:nth-child(2){animation-delay:.1s}.wave i:nth-child(3){animation-delay:.2s}.wave i:nth-child(4){animation-delay:.3s}.wave i:nth-child(5){animation-delay:.15s}.wave i:nth-child(6){animation-delay:.25s}.wave i:nth-child(7){animation-delay:.05s}
+  @keyframes wv{0%,100%{height:7px}50%{height:22px}}
+  .listening{font-size:.7rem;color:var(--ink-3);font-weight:700;}
+  .recog{font-family:var(--font-en);font-size:.94rem;color:var(--green-d);font-weight:600;text-align:center;background:var(--green-soft);border:1px solid var(--green);border-radius:12px;padding:10px 12px;}
+  .recog .cursor{color:var(--green);font-weight:400;}
+
+  /* quick memo */
+  .memo-actions{display:flex;gap:8px;}
+  .memo-actions span{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:.73rem;font-weight:700;padding:9px 0;border-radius:10px;border:1px solid var(--green);color:var(--green);}
+  .memo-actions span svg{width:14px;height:14px;}
+  .memo-actions .pri{background:var(--green);color:#fff;}
+  .memo-res{display:flex;align-items:center;gap:8px;background:var(--green-soft);border:1px solid var(--green);border-radius:12px;padding:10px 12px;font-size:.8rem;}
+  .memo-res .rk{width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;flex:none;}
+  .memo-res .rk svg{width:12px;height:12px;}
+
+  /* diary realism */
+  .diary-date{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--ink-3);font-weight:700;padding:0 2px;}
+  .diary-score{display:inline-flex;align-items:center;gap:4px;font-size:.64rem;font-weight:800;color:var(--green-d);background:var(--green-soft);padding:3px 9px;border-radius:999px;}
+
+  /* deck packs */
+  .packs{max-width:700px;margin:42px auto 0;text-align:center;}
+  .packs-head{font-weight:800;font-size:1.05rem;}
+  .packs-head span{display:block;font-size:.84rem;color:var(--ink-3);font-weight:500;margin-top:4px;}
+  .packs-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:18px;}
+  .packs-chips span{font-size:.85rem;font-weight:700;color:var(--green-d);background:var(--surface);border:1px solid var(--line);padding:9px 16px;border-radius:999px;}
+  .packs-chips .own{color:#fff;background:var(--green);border-color:var(--green);}
+
+  /* positioning pillars */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .pillar{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px 26px;text-align:center;transition:transform .2s,box-shadow .2s;}
+  .pillar:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+  .pillar .pic{width:52px;height:52px;border-radius:15px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;margin:0 auto 12px;}
+  .pillar .pic svg{width:26px;height:26px;}
+  .pstat{font-family:var(--font-en);font-weight:600;font-size:2.5rem;color:var(--green);line-height:1;}
+  .pstat small{font-size:.92rem;font-weight:700;color:var(--ink-2);margin-left:2px;}
+  .pillar h3{font-size:1.1rem;font-weight:900;margin:8px 0 8px;}
+  .pillar p{font-size:.9rem;color:var(--ink-2);line-height:1.66;}
+  .pillar-foot{text-align:center;margin-top:28px;font-weight:800;color:var(--green-d);font-size:1.05rem;display:flex;align-items:center;justify-content:center;gap:9px;}
+  @media(max-width:820px){.pillars{grid-template-columns:1fr;}}
+
+  /* hero phone dashboard */
+  .htask{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:11px 12px;}
+  .htask .mi{width:30px;height:30px;border-radius:9px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;flex:none;}
+  .htask .mi svg{width:16px;height:16px;}
+  .htask .ht{flex:1;}
+  .htask .htt{font-size:.82rem;font-weight:700;}
+  .htask .hn{font-size:.74rem;color:var(--ink-3);font-weight:700;font-family:var(--font-en);}
+  .hbar{height:5px;background:var(--paper);border-radius:3px;margin-top:4px;overflow:hidden;border:1px solid var(--line);}
+  .hbar i{display:block;height:100%;background:var(--green);border-radius:3px;}
+  .hai{margin-top:6px;text-align:center;background:var(--green);color:#fff;border-radius:12px;padding:11px;font-weight:700;font-size:.84rem;}
+
+  /* 4-choice quiz (phone) */
+  .quiz-q{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px;font-size:.9rem;font-weight:700;text-align:center;}
+  .quiz-q b{color:var(--green-d);}
+  .quiz-opts{display:flex;flex-direction:column;gap:8px;}
+  .quiz-opts .opt{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:.86rem;font-family:var(--font-en);color:var(--ink);}
+  .quiz-opts .opt .ol{width:21px;height:21px;border-radius:6px;background:var(--paper);border:1px solid var(--line);display:grid;place-items:center;font-size:.66rem;font-weight:700;color:var(--ink-3);flex:none;}
+  .quiz-opts .opt.correct{background:var(--green-soft);border-color:var(--green);color:var(--green-d);font-weight:600;}
+  .quiz-opts .opt.correct .ol{background:var(--green);border-color:var(--green);color:#fff;}
+  .quiz-opts .opt .ock{margin-left:auto;color:var(--green);display:grid;place-items:center;}
+  .quiz-opts .opt .ock svg{width:16px;height:16px;}
+
+  /* comparison table */
+  .compare{max-width:740px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .compare table{width:100%;border-collapse:separate;border-spacing:0;font-size:.92rem;min-width:540px;}
+  .compare th,.compare td{padding:13px 10px;text-align:center;border-bottom:1px solid var(--line);}
+  .compare thead th{font-weight:800;font-size:.85rem;color:var(--ink-2);vertical-align:bottom;}
+  .compare tbody td:first-child,.compare thead th:first-child{text-align:left;font-weight:700;color:var(--ink);font-size:.86rem;}
+  .compare .sprout-col{background:var(--green-soft);}
+  .compare thead .sprout-col{background:var(--green);color:#fff;border-radius:14px 14px 0 0;font-family:var(--font-en);font-style:italic;font-size:1.05rem;}
+  .compare .yes{color:var(--green);font-weight:900;font-size:1.05rem;}
+  .compare .no{color:var(--ink-3);}
+  .compare .partial{color:var(--amber-d);font-weight:800;}
+  .compare .price-row td{font-weight:900;font-size:1.05rem;border-bottom:none;padding-top:15px;color:var(--ink-2);}
+  .compare .price-row .sprout-col{color:var(--green-d);border-radius:0 0 14px 14px;font-size:1.25rem;}
+  .compare-foot{text-align:center;margin-top:26px;background:var(--amber-soft);border:1px solid var(--amber);border-radius:16px;padding:16px 22px;font-size:.98rem;color:var(--amber-d);font-weight:700;}
+  .compare-foot b{color:var(--green-d);}
+  .compare-note{text-align:center;font-size:.74rem;color:var(--ink-3);margin-top:12px;}
+  @media(max-width:560px){
+    .compare table{min-width:0;font-size:.74rem;}
+    .compare th,.compare td{padding:9px 4px;}
+    .compare tbody td:first-child,.compare thead th:first-child{font-size:.7rem;}
+    .compare thead th{font-size:.66rem;line-height:1.25;}
+    .compare .yes{font-size:.92rem;}
+    .compare .price-row td{font-size:.82rem;padding-top:13px;}
+    .compare .price-row .sprout-col{font-size:1rem;}
+  }
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
   .reveal.in{opacity:1;transform:none;}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}.btn:hover,.cstep:hover,.ai-card:hover{transform:none;}}
   :focus-visible{outline:2.5px solid var(--green);outline-offset:2px;border-radius:4px;}
 </style>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
 </head>
 <body>
 
@@ -357,13 +462,14 @@
 <header>
   <div class="wrap nav">
     <a class="logo" href="#top">
-      <svg class="seed" viewBox="0 0 24 24" fill="none"><path d="M12 21c0-5-3-8-8-9 5-1 8 1 8 6 0-6 3-8 8-7-5 1-8 4-8 10z" fill="#2F6F5E"/><path d="M12 21v-7" stroke="#234E42" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <svg class="seed" viewBox="0 0 200 200" fill="none"><rect width="200" height="200" rx="46" fill="#2F6F5E"/><path d="M100 168 V92" stroke="#F4F1E8" stroke-width="13" stroke-linecap="round"/><path d="M100 104 C104 76 126 60 160 58 C156 90 132 106 100 104 Z" fill="#E8A23C"/><path d="M100 116 C96 92 76 78 44 78 C48 106 70 120 100 116 Z" fill="#F4F1E8"/><circle cx="100" cy="90" r="7.5" fill="#F4F1E8"/></svg>
       Sprout
     </a>
     <nav class="links">
       <a href="#loop">学習ループ</a>
       <a href="#io">機能</a>
       <a href="#ai">AI</a>
+      <a href="#compare">比較</a>
       <a href="#discount">割引</a>
       <a href="#price">料金</a>
     </nav>
@@ -379,9 +485,9 @@
       <h1>読む、から、<span class="mark">話せる</span>まで。</h1>
       <p class="lead">単語・熟語のインプットから、瞬間英作文・英語日記のアウトプットまで。出会った単語をそのまま「使える英語」に変える、ひとつの学習アプリ。</p>
       <div class="chips">
-        <span><span class="dot"></span>インストール不要のWebアプリ</span>
-        <span><span class="dot"></span>単語〜スピーキング・ライティング</span>
-        <span><span class="dot"></span>AI搭載</span>
+        <span><span class="dot"></span>単語・熟語 7,000語以上</span>
+        <span><span class="dot"></span>瞬間英作文 1,000問以上</span>
+        <span><span class="dot"></span>AI搭載・インストール不要</span>
         <span><span class="dot"></span>月¥980〜</span>
       </div>
       <div class="hero-cta">
@@ -391,15 +497,20 @@
       <p class="hero-note">クレジットカード不要・ブラウザですぐに始められます。</p>
     </div>
     <div class="hero-art reveal">
-      <div class="loop">
-        <div class="loop-title">ひとつの学習ループで完結。</div>
-        <div class="loop-ring">
-          <div class="lnode"><div class="step">01 — Read</div><h4>読む</h4><p>英文・記事を読んで、生きた英語に触れる。</p></div>
-          <div class="lnode"><div class="step">02 — Catch</div><h4>拾う</h4><p>わからない単語をその場でメモ。</p></div>
-          <div class="lnode"><div class="step">03 — Learn</div><h4>覚える</h4><p>カード化して忘却曲線で反復。</p></div>
-          <div class="lnode"><div class="step">04 — Use</div><h4>使う</h4><p>瞬間英作文・日記で実際に使う。</p></div>
+      <div class="iphone" style="margin:0 auto">
+        <div class="notch"></div>
+        <div class="ip-screen">
+          <div class="ip-status"><span>9:41</span><span class="rgt"><span class="wifi">●●●</span><span class="bat"></span></span></div>
+          <div class="appbar"><span class="at">Sprout</span><span class="ab">🔥 連続28日</span></div>
+          <div class="ip-body">
+            <div style="font-size:.84rem;font-weight:700;color:var(--ink)">今日の学習</div>
+            <div class="htask"><div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div><div class="ht"><div class="htt">単語・熟語</div><div class="hbar"><i style="width:60%"></i></div></div><div class="hn">12/20</div></div>
+            <div class="htask"><div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></div><div class="ht"><div class="htt">瞬間英作文</div><div class="hbar"><i style="width:62%"></i></div></div><div class="hn">5/8</div></div>
+            <div class="htask"><div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div><div class="ht"><div class="htt">英語日記</div><div style="font-size:.66rem;color:var(--amber-d);font-weight:700">今日はまだ</div></div><div class="hn" style="color:var(--green)">書く →</div></div>
+            <div class="hai">✦ AIに質問する</div>
+          </div>
+          <div class="ip-tab"><span class="on"><i></i>ホーム</span><span><i></i>学習</span><span><i></i>AI</span><span><i></i>記録</span></div>
         </div>
-        <div class="loop-foot"><span class="arr">↻</span> 使った単語は、また次の学習へ。</div>
       </div>
     </div>
   </div>
@@ -460,6 +571,38 @@
   </div>
 </section>
 
+<!-- POSITIONING -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">英語学習の決定版</span>
+      <h2>単語も、スピーキングも、<span class="big">これ一つ</span>で。</h2>
+      <p>単語アプリとしても、スピーキングアプリとしても妥協しない。さらにノートなどの便利機能まで備えた、英語学習の総合アプリです。</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 012-2h12v16H6a2 2 0 01-2-2z"/><path d="M8 8h8M8 12h6"/></svg></div>
+        <div class="pstat">7,000<small>語以上</small></div>
+        <h3>単語・熟語アプリとして</h3>
+        <p>日常生活からビジネス・TOEIC・TOEFL・英検まで幅広く対応。オリジナルカードはAIが意味と例文を自動生成し、忘却曲線に沿って定着させます。</p>
+      </div>
+      <div class="pillar">
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></div>
+        <div class="pstat">1,000<small>問以上</small></div>
+        <h3>スピーキングアプリとして</h3>
+        <p>瞬間英作文は文法・場面で選べて、音声認識に対応。AIがあなたのレベルに合わせた問題まで自動で出題します。</p>
+      </div>
+      <div class="pillar">
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+        <div class="pstat">＋<small>便利機能</small></div>
+        <h3>さらに、毎日を支える機能</h3>
+        <p>ノート・フォルダ整理に、AI添削・翻訳・チューター。英語日記まで、学びをひとつに集約できます。</p>
+      </div>
+    </div>
+    <div class="pillar-foot reveal"><span style="color:var(--amber-d)">✦</span> だから、何個ものアプリを使い分ける必要はありません。</div>
+  </div>
+</section>
+
 <!-- SCREENS -->
 <section>
   <div class="wrap">
@@ -475,21 +618,44 @@
     <div class="cslide">
       <div class="iphone"><div class="notch"></div><div class="ip-screen">
         <div class="ip-status"><span>9:41</span><span class="rgt"><span class="wifi">●●●</span><span class="bat"></span></span></div>
-        <div class="appbar"><span class="at">今日の単語・熟語</span><span class="ab">3 / 12</span></div>
+        <div class="appbar"><span class="at">ビジネス英語</span><span class="ab">12 / 40</span></div>
         <div class="ip-body">
           <div class="fcard">
+            <div class="deckchip">✦ ビジネス英語パック</div>
             <div class="fw">reluctant</div>
+            <div class="fipa">/rɪˈlʌktənt/</div>
             <div class="fspk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M16 9a3 3 0 010 6"/></svg></div>
+            <div class="fdiv"></div>
             <div class="fm">気が進まない・ためらって</div>
-            <div class="fe">She was reluctant to leave.</div>
-            <div class="fej">彼女はその場を離れたがらなかった。</div>
+            <div class="fe">He was reluctant to agree.</div>
+            <div class="fej">彼は同意することにためらった。</div>
           </div>
-          <div class="frate"><span>もう一度</span><span class="good">覚えた</span></div>
+          <div class="srs"><span class="again">もう一度</span><span>むずかしい</span><span>ふつう</span><span class="good">かんたん</span></div>
         </div>
-        <div class="ip-tab"><span class="on"><i></i>ホーム</span><span><i></i>学習</span><span><i></i>AI</span><span><i></i>記録</span></div>
+        <div class="ip-tab"><span><i></i>ホーム</span><span class="on"><i></i>学習</span><span><i></i>AI</span><span><i></i>記録</span></div>
       </div></div>
       <div class="clabel">単語・熟語学習</div>
-      <div class="csub">音声つきカードで、<br>忘却曲線に沿って反復。</div>
+      <div class="csub">音声つきカードを、<br>忘却曲線で最適に反復。</div>
+    </div>
+
+    <!-- 1.5 熟語4択クイズ -->
+    <div class="cslide">
+      <div class="iphone"><div class="notch"></div><div class="ip-screen">
+        <div class="ip-status"><span>9:41</span><span class="rgt"><span class="wifi">●●●</span><span class="bat"></span></span></div>
+        <div class="appbar"><span class="at">熟語クイズ・4択</span><span class="ab">4 / 10</span></div>
+        <div class="ip-body">
+          <div class="quiz-q">「〜を思いつく」に近い<br>意味の<b>熟語</b>は？</div>
+          <div class="quiz-opts">
+            <div class="opt correct"><span class="ol">A</span>come up with<span class="ock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span></div>
+            <div class="opt"><span class="ol">B</span>get over</div>
+            <div class="opt"><span class="ol">C</span>look up to</div>
+            <div class="opt"><span class="ol">D</span>put off</div>
+          </div>
+        </div>
+        <div class="ip-tab"><span><i></i>ホーム</span><span class="on"><i></i>学習</span><span><i></i>AI</span><span><i></i>記録</span></div>
+      </div></div>
+      <div class="clabel">熟語クイズ（4択）</div>
+      <div class="csub">4択でテンポよく確認。<br>熟語の定着をチェック。</div>
     </div>
 
     <!-- 2. 単語メモ → AI -->
@@ -515,21 +681,49 @@
       <div class="csub">出会った単語を入れるだけで<br>意味・例文までカードに。</div>
     </div>
 
-    <!-- 3. 瞬間英作文 -->
+    <!-- 2.5 サクッとメモ -->
     <div class="cslide">
       <div class="iphone"><div class="notch"></div><div class="ip-screen">
         <div class="ip-status"><span>9:41</span><span class="rgt"><span class="wifi">●●●</span><span class="bat"></span></span></div>
-        <div class="appbar"><span class="at">瞬間英作文</span><span class="ab">2 / 8</span></div>
+        <div class="appbar"><span class="at">サクッとメモ</span><span class="ab">英会話中</span></div>
         <div class="ip-body">
+          <div style="font-size:.72rem;color:var(--ink-3);padding:0 2px">レッスン中に聞こえた表現を、その場で。</div>
+          <div class="mline"><div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div><span class="typed">get the hang of it</span></div>
+          <div class="memo-actions">
+            <span class="pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>翻訳</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>カード化</span>
+          </div>
+          <div class="memo-res"><div class="rk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></div><div><b>コツをつかむ・慣れる</b><div style="font-size:.7rem;color:var(--ink-3)">単語カードにも追加しました</div></div></div>
+        </div>
+        <div class="ip-tab"><span><i></i>ホーム</span><span><i></i>学習</span><span class="on"><i></i>AI</span><span><i></i>記録</span></div>
+      </div></div>
+      <div class="clabel">サクッとメモ</div>
+      <div class="csub">英会話中に聞いた表現を即メモ。<br>翻訳もカード化もワンタップ。</div>
+    </div>
+
+    <!-- 3. 瞬間英作文（音声認識） -->
+    <div class="cslide">
+      <div class="iphone"><div class="notch"></div><div class="ip-screen">
+        <div class="ip-status"><span>9:41</span><span class="rgt"><span class="wifi">●●●</span><span class="bat"></span></span></div>
+        <div class="appbar"><span class="at">瞬間英作文・スピーキング</span><span class="ab">2 / 8</span></div>
+        <div class="ip-body">
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span style="font-size:.6rem;font-weight:700;color:var(--green);background:var(--green-soft);padding:3px 9px;border-radius:999px">文法・現在完了</span>
+            <span style="font-size:.6rem;font-weight:700;color:var(--amber-d);background:var(--amber-soft);padding:3px 9px;border-radius:999px">場面・ビジネス</span>
+            <span style="font-size:.6rem;font-weight:700;color:var(--ink-3);background:var(--surface);border:1px solid var(--line);padding:3px 9px;border-radius:999px">AI出題</span>
+          </div>
           <div class="qjp">彼は新しい計画を思いついた。</div>
-          <div class="qin">He came up with a new plan.</div>
-          <div class="qans"><div class="ql">お手本</div><div class="qe">He came up with a new plan.</div></div>
-          <div class="qjudge"><span class="o">○ 正解</span><span class="x">× 不正解</span></div>
+          <div class="mic-wrap">
+            <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></div>
+            <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="listening">聞き取り中…</div>
+          </div>
+          <div class="recog">He came up with a new plan<span class="cursor">｜</span></div>
         </div>
         <div class="ip-tab"><span><i></i>ホーム</span><span class="on"><i></i>学習</span><span><i></i>AI</span><span><i></i>記録</span></div>
       </div></div>
-      <div class="clabel">瞬間英作文</div>
-      <div class="csub">覚えた単語を使って<br>「話す瞬発力」を鍛える。</div>
+      <div class="clabel">瞬間英作文（音声認識）</div>
+      <div class="csub">文法・場面で選べる1,000問以上。<br>AIがレベルに合わせて出題も。</div>
     </div>
 
     <!-- 4. 英語日記 → AI添削 -->
@@ -538,20 +732,21 @@
         <div class="ip-status"><span>9:41</span><span class="rgt"><span class="wifi">●●●</span><span class="bat"></span></span></div>
         <div class="appbar"><span class="at">英語日記</span><span class="ab">AI添削</span></div>
         <div class="ip-body">
-          <div class="diary-text">Today I <span class="strike">go</span> <span class="fix">went</span> to a cafe and elaborate<span class="fix">d</span> my plan.</div>
+          <div class="diary-date"><span>6月24日（水）☀️</span><span class="diary-score">★ 自然さ 92</span></div>
+          <div class="diary-text">Today I <span class="strike">go</span> <span class="fix">went</span> to a cafe and <span class="strike">elaborate</span> <span class="fix">elaborated</span> my plan. <span class="strike">It was</span> <span class="fix">I felt</span> reluctant at first, but I'm glad I did.</div>
           <div class="fb-row">
             <div class="fbk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></div>
-            <div class="fbt"><b>いいですね！</b> 過去形は went が自然。覚えたての <b>elaborate</b> を使えています。</div>
+            <div class="fbt"><b>いいですね！</b> 覚えたての <b>elaborate</b>・<b>reluctant</b> を自然に使えています。</div>
           </div>
           <div class="fb-row" style="background:var(--amber-soft)">
             <div class="fbk" style="background:var(--amber-d)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 16h.01"/></svg></div>
-            <div class="fbt">接続詞を足すと、より自然に。</div>
+            <div class="fbt">気持ちは <b>I felt reluctant</b> とすると、より自然です。</div>
           </div>
         </div>
         <div class="ip-tab"><span><i></i>ホーム</span><span class="on"><i></i>学習</span><span><i></i>AI</span><span><i></i>記録</span></div>
       </div></div>
       <div class="clabel">英語日記 → AI添削</div>
-      <div class="csub">書いた英語をその場で添削。<br>ほめて、伸ばす。</div>
+      <div class="csub">その日の出来事を英語で。<br>ほめて、直して、伸ばす。</div>
     </div>
 
     <!-- 5. AIチューター -->
@@ -590,7 +785,16 @@
       <div class="clabel">ノート・フォルダ</div>
       <div class="csub">学びや気づきをフォルダで整理。<br>あとからすぐ見返せる。</div>
     </div>
-  <div class="swipe-hint">横にスワイプできます</div>
+  </div>
+  <div class="swipe-hint">自動でめぐります ・ スワイプでも操作できます</div>
+  <div class="wrap">
+    <div class="packs reveal">
+      <div class="packs-head">日常生活からビジネス・各種試験まで、目的別パックに対応。<span>オリジナルカードはAIが意味・例文を自動生成、忘却曲線で復習。</span></div>
+      <div class="packs-chips">
+        <span>日常会話</span><span>ビジネス英語</span><span>TOEIC</span><span>TOEFL</span><span>英検</span><span>大学受験</span><span>海外旅行</span><span class="own">＋ オリジナル作成</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- INPUT / OUTPUT -->
@@ -605,7 +809,7 @@
       <div class="iocol in">
         <div class="tag">Input — ためる</div>
         <h3>インプット</h3>
-        <div class="fitem"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div><div><h4>単語・熟語学習</h4><p>例文と音声つきのカードで、意味も使い方も身につく。</p></div></div>
+        <div class="fitem"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div><div><h4>単語・熟語学習</h4><p>7,000語以上を収録。日常〜ビジネス・TOEIC/TOEFL/英検に対応し、オリジナルもAIが例文を自動生成。</p></div></div>
         <div class="fitem"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 012-2h12v16H6a2 2 0 01-2-2z"/><path d="M8 8h8M8 12h6"/></svg></div><div><h4>リーディング</h4><p>文脈の中で語彙にふれ、わからない単語はその場でメモ。</p></div></div>
         <div class="fitem"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5"/><circle cx="12" cy="14" r="3"/></svg></div><div><h4>忘却曲線で復習</h4><p>忘れる前に最適なタイミングで出題、効率よく定着。</p></div></div>
         <div class="fitem"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div><h4>ノート・フォルダ整理</h4><p>気づきや表現をメモして、フォルダで分類。学びがそのまま自分の資産に。</p></div></div>
@@ -613,7 +817,7 @@
       <div class="iocol out">
         <div class="tag">Output — 使う</div>
         <h3>アウトプット</h3>
-        <div class="fitem"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h13l-4-4M16 12l-4 4"/><path d="M21 4v16"/></svg></div><div><h4>瞬間英作文</h4><p>日本語をパッと英語に。覚えた単語を使う瞬発力を鍛える。</p></div></div>
+        <div class="fitem"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h13l-4-4M16 12l-4 4"/><path d="M21 4v16"/></svg></div><div><h4>瞬間英作文</h4><p>文法・場面で選べる1,000問以上。AIがレベルに合わせて出題も生成。</p></div></div>
         <div class="fitem"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div><div><h4>英語日記</h4><p>今日の出来事を英語で。覚えた単語を自分の言葉として使う。</p></div></div>
         <div class="fitem"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div><div><h4>AI添削</h4><p>書いた英文をその場で添削。間違いが学びに変わる。</p></div></div>
       </div>
@@ -655,7 +859,7 @@
       <div class="hero-cta"><a class="btn btn-primary" href="https://app.sproutenglish.jp" target="_blank" rel="noopener">Webアプリを開く</a></div>
       <p class="hero-note">推奨：スマホで開いて「ホーム画面に追加」すると、いちばん快適に使えます。</p>
     </div>
-    <div class="phone reveal" style="background:#1b1b1d;width:262px;aspect-ratio:9/19.3;border-radius:44px;padding:10px">
+    <div class="phone reveal" style="background:#1b1b1d;width:240px;aspect-ratio:9/19.3;border-radius:44px;padding:10px">
       <div class="iphone" style="width:100%;height:100%;box-shadow:none;padding:0;background:transparent">
         <div class="notch"></div>
         <div class="ip-screen">
@@ -724,6 +928,33 @@
       </div>
     </div>
     <div class="disc-combo reveal">✦ 連続学習（最大15%）＋ 友達紹介（最大25%）で、月額プランが最大40%オフ。</div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">他社との比較</span>
+      <h2>全部入りで、<span class="big">業界最安値</span>水準。</h2>
+      <p>単語アプリとスピーキングアプリを別々に契約すると、これだけかかります。Sproutは、ぜんぶ揃って月¥980〜。</p>
+    </div>
+    <div class="compare reveal">
+      <table>
+        <thead>
+          <tr><th></th><th>単語<br>アプリ</th><th>スピーキング<br>アプリ</th><th class="sprout-col">Sprout</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>単語・熟語学習（7,000語＋）</td><td class="yes">✓</td><td class="no">−</td><td class="sprout-col yes">✓</td></tr>
+          <tr><td>瞬間英作文・スピーキング（1,000問＋）</td><td class="no">−</td><td class="yes">✓</td><td class="sprout-col yes">✓</td></tr>
+          <tr><td>AI添削・翻訳・チューター</td><td class="partial">△</td><td class="partial">△</td><td class="sprout-col yes">✓</td></tr>
+          <tr><td>英語日記・ノート整理</td><td class="no">−</td><td class="no">−</td><td class="sprout-col yes">✓</td></tr>
+          <tr class="price-row"><td>月額</td><td>約¥1,500</td><td>約¥2,400</td><td class="sprout-col">¥980〜</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="compare-foot reveal">単語＋スピーキングを別々に契約すると <b>月¥3,900</b>。<br>Sproutなら、<b>全部入りで月¥980〜</b>。</div>
+    <p class="compare-note">※ 各カテゴリの一般的な料金帯をもとにした比較イメージです。実際の金額はサービスにより異なります。</p>
   </div>
 </section>
 
@@ -821,7 +1052,7 @@
 <footer>
   <div class="wrap foot">
     <a class="logo" href="#top">
-      <svg class="seed" viewBox="0 0 24 24" fill="none"><path d="M12 21c0-5-3-8-8-9 5-1 8 1 8 6 0-6 3-8 8-7-5 1-8 4-8 10z" fill="#2F6F5E"/></svg>
+      <svg class="seed" viewBox="0 0 200 200" fill="none"><rect width="200" height="200" rx="46" fill="#2F6F5E"/><path d="M100 168 V92" stroke="#F4F1E8" stroke-width="13" stroke-linecap="round"/><path d="M100 104 C104 76 126 60 160 58 C156 90 132 106 100 104 Z" fill="#E8A23C"/><path d="M100 116 C96 92 76 78 44 78 C48 106 70 120 100 116 Z" fill="#F4F1E8"/><circle cx="100" cy="90" r="7.5" fill="#F4F1E8"/></svg>
       Sprout
     </a>
     <div>© 2026 Sprout — 読む、から、話せるまで。</div>
@@ -829,8 +1060,52 @@
 </footer>
 
 <script>
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+      els.forEach(function(el){io.observe(el);});
+      // safety net: if anything is still hidden shortly after load, reveal it
+      window.addEventListener('load',function(){setTimeout(function(){els.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight&&!el.classList.contains('in'))el.classList.add('in');});},400);});
+    } else {
+      els.forEach(function(el){el.classList.add('in');});
+    }
+  })();
+
+  // auto-looping screen carousel (seamless, pause on interaction, manual swipe still works)
+  (function(){
+    var car=document.querySelector('.carousel');
+    if(!car || car.children.length<2) return;
+    var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var count=car.children.length;
+    var originals=Array.prototype.slice.call(car.children);
+    originals.forEach(function(s){ car.appendChild(s.cloneNode(true)); });
+    var setWidth=0;
+    function measure(){ setWidth = car.children[count].offsetLeft - car.children[0].offsetLeft; }
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+    if(reduce) return; // reduced-motion: keep slides but no auto-scroll
+    var acc=0, paused=false, resumeT=null;
+    var SPEED=0.5; // px/frame (~30px/s)
+    function frame(){
+      if(!paused && setWidth>0){
+        acc += SPEED;
+        if(acc >= setWidth) acc -= setWidth;
+        car.scrollLeft = acc;
+      }
+      requestAnimationFrame(frame);
+    }
+    function pause(){ paused=true; if(resumeT){clearTimeout(resumeT);resumeT=null;} }
+    function resumeLater(){ if(resumeT)clearTimeout(resumeT); resumeT=setTimeout(function(){ if(setWidth>0)acc=car.scrollLeft % setWidth; paused=false; },1500); }
+    car.addEventListener('mouseenter',pause);
+    car.addEventListener('mouseleave',resumeLater);
+    car.addEventListener('touchstart',pause,{passive:true});
+    car.addEventListener('touchend',resumeLater,{passive:true});
+    car.addEventListener('pointerdown',pause);
+    car.addEventListener('pointerup',resumeLater);
+    requestAnimationFrame(frame);
+  })();
 </script>
 </body>
 </html>
